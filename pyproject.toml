@@ -1,0 +1,30 @@
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=23.7.0",
+    "ipython>=8.14.0",
+]
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Abdullah Al Mobin", email = "aalmobin8@gmail.com"},
+]
+dependencies = [
+    "django>=4.2.3",
+    "djangorestframework>=3.14.0",
+    "django-cors-headers>=4.2.0",
+    "djangorestframework-simplejwt>=5.2.2",
+    "setuptools>=68.0.0",
+    "django-filter>=23.2",
+]
+requires-python = ">=3.11"
+license = {text = "MIT"}
+
+[tool.pdm.scripts]
+start = "python manage.py runserver"
+createsuperuser = "python manage.py createsuperuser"
+makemigrations = "python manage.py makemigrations"
+migrate = "python manage.py migrate"

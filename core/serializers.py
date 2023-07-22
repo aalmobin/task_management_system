@@ -96,18 +96,25 @@ class TaskUserSerializer(serializers.ModelSerializer):
 class TaskSerializer(serializers.ModelSerializer):
     all_assignee = serializers.SerializerMethodField()
     all_comments = serializers.SerializerMethodField()
-    creator = TaskUserSerializer(many=False)
+    creator_info = serializers.SerializerMethodField()
 
     class Meta:
         model = Task
-        fields = "__all__"
-        extra_kwargs = {"assignee": {"write_only": True}}
+        exclude = [
+            "creator",
+        ]
+        extra_kwargs = {
+            "assignee": {"write_only": True},
+        }
 
     def get_all_assignee(self, obj):
         return TaskUserSerializer(obj.assignee, many=True).data
 
     def get_all_comments(self, obj):
         return CommentSerializer(obj.task_comments.all(), many=True).data
+
+    def get_creator_info(self, obj):
+        return TaskUserSerializer(obj.creator, many=False).data
 
 
 class FlatTaskSerializer(serializers.ModelSerializer):
@@ -121,4 +128,6 @@ class FlatTaskSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = "__all__"
+        exclude = [
+            "creator",
+        ]

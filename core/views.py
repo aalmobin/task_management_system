@@ -57,7 +57,7 @@ class TaskViewSet(viewsets.ModelViewSet):
         permissions.IsAuthenticatedOrReadOnly,
         custom_permissions.IsAdminOrOwnerOrManagerOrReadOnly,
     ]
-    pagination_class = paginations.TaskPagination
+    pagination_class = paginations.CustomPagination
     filterset_class = TaskFilter
     filter_backends = [
         filters.DjangoFilterBackend,
@@ -132,6 +132,7 @@ class TaskViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = models.Comment.objects.all()
     serializer_class = serializers.CommentSerializer
+    pagination_class = paginations.CustomPagination
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly,
         custom_permissions.IsAdminOrOwnerOrManagerOrReadOnly,

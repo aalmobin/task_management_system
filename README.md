@@ -1,3 +1,5 @@
+[![Test and Deploy](https://github.com/aalmobin/task_management_system/actions/workflows/build_test.yml/badge.svg)](https://github.com/aalmobin/task_management_system/actions/workflows/build_test.yml)
+
 # task_management_system
 
 ## Project Description

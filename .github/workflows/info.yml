@@ -1,6 +1,6 @@
 name: Info
 
-on: workflow_dispath
+on: workflow_dispatch
 
 jobs:
   info:

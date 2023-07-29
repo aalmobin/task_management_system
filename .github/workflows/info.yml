@@ -1,0 +1,10 @@
+name: Info
+
+on: workflow_dispath
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Github Context
+        run: "${{ toJSON(github) }}"
